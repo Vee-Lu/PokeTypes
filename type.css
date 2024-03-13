@@ -1,0 +1,25 @@
+#type {
+    display: grid;
+    justify-content: center;
+    grid-gap: 1px;
+    
+    grid-template-columns: repeat(6,10vw);
+    grid-template-rows: repeat(3,10vh);
+   
+}
+
+#type > .type {
+    justify-content: center;
+    align-items: end;
+    border: solid;
+    
+    text-align: center;
+    vertical-align: middle;
+   
+
+    max-width: 10vw;
+    min-width: 10vw;
+
+    max-height: 10vh;
+    min-height: 10vh;
+}
