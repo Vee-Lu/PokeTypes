@@ -1,4 +1,4 @@
-#type {
+#types {
     display: grid;
     justify-content: center;
     grid-gap: 1px;
@@ -8,9 +8,15 @@
    
 }
 
-#type > .type {
-    justify-content: center;
-    align-items: end;
+.type > img {
+    max-height: 100%;
+    max-width: 100%;
+}
+
+.type > div {
+    border: solid;
+}
+#types > .type {
     border: solid;
     
     text-align: center;
@@ -19,7 +25,8 @@
 
     max-width: 10vw;
     min-width: 10vw;
-
     max-height: 10vh;
     min-height: 10vh;
+
+    grid-gap: 1px;
 }
