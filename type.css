@@ -1,32 +1,127 @@
-#types {
-    display: grid;
-    justify-content: center;
-    grid-gap: 1px;
-    
-    grid-template-columns: repeat(6,10vw);
-    grid-template-rows: repeat(3,10vh);
-   
-}
 
-.type > img {
-    max-height: 100%;
-    max-width: 100%;
-}
-
-.type > div {
-    border: solid;
-}
-#types > .type {
-    border: solid;
-    
+body {
     text-align: center;
-    vertical-align: middle;
+    
+}
+
+#types {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+#types > .type {
+    display: flex;
+    border: solid;
+    flex-direction: column;
+    justify-content: end;
+    text-align: center;
+
+    margin:.5px;
+    padding-top: 4px;
+
+    height: 15vh;
+    min-height: 50px;
+    
+
+    width: 10vw;
+    min-width: 60px;
    
+}
 
-    max-width: 10vw;
-    min-width: 10vw;
-    max-height: 10vh;
-    min-height: 10vh;
+.type > div{
+    color: white;
+}
 
-    grid-gap: 1px;
+.type > div:nth-child(2) {
+    border: solid;
+    border-right: none;
+    border-left: none;
+    border-bottom: none;
+    
+}
+
+.img-container {
+    margin: auto;
+    display: block;
+}
+
+.img-container > img {
+   text-align: center;
+   height: 9vh;
+   width:7vw;
+}
+
+/*CSS design for each type*/
+#fire > div:nth-child(2) {
+    background-color: #EE8130;
+}
+
+#water > div:nth-child(2) {
+    background-color: #6390F0;
+}
+
+#grass > div:nth-child(2) {
+    background-color: #7AC74C;
+}
+
+#normal > div:nth-child(2) {
+    background-color: #A8A77A;
+}
+
+#flying > div:nth-child(2) {
+    background-color: #A98FF3;
+}
+
+#fighting > div:nth-child(2) {
+    background-color: #C22E28;
+}
+
+#ground > div:nth-child(2) {
+    background-color: #E2BF65;
+}
+
+#bug > div:nth-child(2) {
+    background-color: #A6B91A;
+}
+
+#electric> div:nth-child(2) {
+    background-color: #F7D02C;
+}
+
+#ice > div:nth-child(2) {
+    background-color: #96D9D6;
+}
+
+#ghost > div:nth-child(2) {
+    background-color: #735797;
+}
+
+#psychic > div:nth-child(2) {
+    background-color: #F95587;
+}
+
+#dragon > div:nth-child(2) {
+    background-color: #3571fc;
+}
+
+#fairy > div:nth-child(2) {
+    background-color: #D685AD;
+}
+
+#dark > div:nth-child(2) {
+    background-color: #705746;
+}
+
+#rock > div:nth-child(2) {
+    background-color: #B6A136;
+}
+
+#steel > div:nth-child(2) {
+    background-color: #B7B7CE;
+}
+
+#poison > div:nth-child(2) {
+    background-color: #A33EA1;
 }

@@ -1,15 +1,15 @@
-//Get all the divs that have a type class
+//Get all the type containers that contain the pokemon types
 var types = document.querySelectorAll(".type");
 var url = "https://pokeapi.co/api/v2/type/"
-console.log(types);
+//console.log(types);
 
-//Get the weakness div container
+//Get the weakness div container that will output the current type's corresponding weakness
 const weaknessContainer = document.querySelector("#weaknesses")
 
-//Add the getType function for each type dive when clicked o
+//Add the getType function for each type class
 types.forEach(type => type.addEventListener("click", function() {
-    console.log(type.innerHTML);
-    getType(type);
+    //console.log(type.childNodes[3].innerHTML);
+    getType(type.childNodes[3]);
 }));
 
 
@@ -20,9 +20,9 @@ async function getType(type) {
     //First clear the previous Type weakness
     clearWeakness();
 
-    //Get the Pokemon type and append it to the PokeAPI URL and process and fetch the data from the JSON
+    //Get the Pokemon type and append it to the PokeAPI URL so we can process and fetch the data from the PokeAPI JSON
     var typeUrl = url + type.innerHTML.toLowerCase();
-    console.log(typeUrl);
+    //console.log(typeUrl);
     const response = await fetch(typeUrl);
     const typeData = await response.json();
 
@@ -34,7 +34,7 @@ async function getType(type) {
         let weaknessType = document.createElement("div");
         weaknessType.classList.add("weakness");
 
-        console.log(weakness.name);
+        //console.log(weakness.name);
         weaknessType.innerText = weakness.name;
 
         weaknessContainer.appendChild(weaknessType);
