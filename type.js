@@ -1,10 +1,10 @@
-//Get all the type containers that contain the pokemon types
+//Get all the elements needed for PokeType
 var types = document.querySelectorAll(".type");
 var url = "https://pokeapi.co/api/v2/type/"
-//console.log(types);
+var effective = document.querySelector("#effective");
+var not_effective = document.querySelector("#not_effective");
 
-//Get the weakness div container that will output the current type's corresponding weakness
-const weaknessContainer = document.querySelector("#weaknesses")
+
 
 //Add the getType function for each type class
 types.forEach(type => type.addEventListener("click", function() {
@@ -18,7 +18,7 @@ types.forEach(type => type.addEventListener("click", function() {
 */
 async function getType(type) {
     //First clear the previous Type weakness
-    clearWeakness();
+    clearTypes();
 
     //Get the Pokemon type and append it to the PokeAPI URL so we can process and fetch the data from the PokeAPI JSON
     var typeUrl = url + type.innerHTML.toLowerCase();
@@ -27,24 +27,39 @@ async function getType(type) {
     const typeData = await response.json();
 
     //Gets the list of weaknesses from the JSON
-    const weaknesses = typeData.damage_relations.double_damage_from;
+    const strengths = typeData.damage_relations.double_damage_to;
+    const weaknesses = typeData.damage_relations.half_damage_to;
 
-    //For each Pokemon type's weakness, add it to the weaknesses div container
+    //For each Pokemon type's weakness, add it to the Weakness Table
     weaknesses.forEach(weakness => {
-        let weaknessType = document.createElement("div");
-        weaknessType.classList.add("weakness");
+        let weakRow = document.createElement("tr");
+        let weakHeader = document.createElement("th");
+       
+        weakRow.appendChild(weakHeader);
+        weakHeader.innerText = weakness.name;
 
-        //console.log(weakness.name);
-        weaknessType.innerText = weakness.name;
-
-        weaknessContainer.appendChild(weaknessType);
-
+        not_effective.appendChild(weakRow);
     })
-    //console.log(weaknesses);
+
+     //For each Pokemon type's strengths, add it to the Strength Table
+     strengths.forEach(strength => {
+        let strengthRow = document.createElement("tr");
+        let strengthHeader = document.createElement("th");
+       
+        strengthRow.appendChild(strengthHeader);
+        strengthHeader.innerText = strength.name;
+
+        effective.appendChild(strengthRow);
+    })
+
 }
 
-function clearWeakness() {
-    while(weaknessContainer.lastChild) {
-        weaknessContainer.removeChild(weaknessContainer.lastChild);
+function clearTypes() {
+    while(not_effective.childNodes.length > 2) {
+        not_effective.removeChild(not_effective.lastChild);
+    }
+
+    while(effective.childNodes.length > 2) {
+        effective.removeChild(effective.lastChild);
     }
 }
