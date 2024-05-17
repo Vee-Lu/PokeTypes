@@ -3,6 +3,7 @@ body {
     text-align: center;
     display: flex;
     flex-direction: column;
+    background-color:	#3b4cca;
 }
 
 
@@ -26,6 +27,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
+    
 }
 
 
@@ -53,6 +55,7 @@ body {
 
 .type > div{
     color: white;
+    border-radius: 2px;
 }
 
 .type > div:nth-child(2) {
@@ -75,14 +78,23 @@ body {
    width:6vw;
 }
 
+table {
+    background-color:#ffcb05;
+}
+
 table, th {
     border:1px solid black;
     border-radius: 5px;
+
     width: 30vw;
     min-width: 150px;
 
     height: 1vh;
     min-height: 35px;
+
+    color: white;
+    
+
 }
 
 

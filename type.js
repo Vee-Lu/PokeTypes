@@ -5,6 +5,8 @@ var effective = document.querySelector("#effective");
 var not_effective = document.querySelector("#not_effective");
 
 
+//
+
 
 //Add the getType function for each type class
 types.forEach(type => type.addEventListener("click", function() {
@@ -34,9 +36,19 @@ async function getType(type) {
     weaknesses.forEach(weakness => {
         let weakRow = document.createElement("tr");
         let weakHeader = document.createElement("th");
+
+
+        let type = document.getElementById(weakness.name).children[1];
+        let typeCSS = window.getComputedStyle(type);
+        let color = typeCSS.getPropertyValue("background-color");
+        
+
        
         weakRow.appendChild(weakHeader);
+        weakHeader.style.backgroundColor = color;
+
         weakHeader.innerText = weakness.name;
+        weakHeader.innerText = weakHeader.innerText[0].toUpperCase() + weakHeader.innerText.slice(1);;
 
         not_effective.appendChild(weakRow);
     })
@@ -45,9 +57,16 @@ async function getType(type) {
      strengths.forEach(strength => {
         let strengthRow = document.createElement("tr");
         let strengthHeader = document.createElement("th");
+
+        let type = document.getElementById(strength.name).children[1];
+        let typeCSS = window.getComputedStyle(type);
+        let color = typeCSS.getPropertyValue("background-color");
        
         strengthRow.appendChild(strengthHeader);
+        strengthHeader.style.backgroundColor = color;
+
         strengthHeader.innerText = strength.name;
+        strengthHeader.innerText = strengthHeader.innerText[0].toUpperCase() + strengthHeader.innerText.slice(1);;
 
         effective.appendChild(strengthRow);
     })
