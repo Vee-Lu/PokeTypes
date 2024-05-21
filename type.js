@@ -12,6 +12,7 @@ var not_effective = document.querySelector("#not_effective");
 types.forEach(type => type.addEventListener("click", function() {
     //console.log(type.childNodes[3].innerHTML);
     getType(type.childNodes[3]);
+    type.classList.add("selected");
 }));
 
 
@@ -73,7 +74,13 @@ async function getType(type) {
 
 }
 
+//Resets the table headers and rows
 function clearTypes() {
+    prev = document.getElementsByClassName("selected");
+    if (prev[0] != undefined) {
+        prev[0].classList.remove("selected");
+    }
+
     while(not_effective.childNodes.length > 2) {
         not_effective.removeChild(not_effective.lastChild);
     }
