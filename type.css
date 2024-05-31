@@ -62,6 +62,7 @@ body {
     min-width: 60px;   
 }
 
+
 .type > div{
     color: white;
     border-radius: 1.5px;
@@ -149,74 +150,76 @@ a:hover {
 }
 
 /*CSS design for each type*/
-#fire > div:nth-child(2) {
+#fire > div:nth-child(2), #fire:hover {
+    --fire: #EE8130;
     background-color: #EE8130;
 }
 
-#water > div:nth-child(2) {
+#water > div:nth-child(2), #water:hover {
     background-color: #6390F0;
 }
 
-#grass > div:nth-child(2) {
+#grass > div:nth-child(2), #grass:hover {
     background-color: #7AC74C;
 }
 
-#normal > div:nth-child(2) {
+#normal > div:nth-child(2), #normal:hover {
     background-color: #8e8e86;
 }
 
-#flying > div:nth-child(2) {
-    background-color: #A98FF3;
+#flying > div:nth-child(2), #flying:hover {
+    background-color: #a0bbff;
+    /*background-color: #A98FF3;*/
 }
 
-#fighting > div:nth-child(2) {
+#fighting > div:nth-child(2), #fighting:hover {
     background-color: #C22E28;
 }
 
-#ground > div:nth-child(2) {
+#ground > div:nth-child(2), #ground:hover {
     background-color: #d58a12;
 }
 
-#bug > div:nth-child(2) {
+#bug > div:nth-child(2), #bug:hover {
     background-color: #A6B91A;
 }
 
-#electric> div:nth-child(2) {
-    background-color: #F7D02C;
+#electric> div:nth-child(2), #electric:hover {
+    background-color: #fedc51;
 }
 
-#ice > div:nth-child(2) {
+#ice > div:nth-child(2), #ice:hover {
     background-color: #96D9D6;
 }
 
-#ghost > div:nth-child(2) {
+#ghost > div:nth-child(2), #ghost:hover {
     background-color: #735797;
 }
 
-#psychic > div:nth-child(2) {
+#psychic > div:nth-child(2), #psychic:hover {
     background-color: #F95587;
 }
 
-#dragon > div:nth-child(2) {
+#dragon > div:nth-child(2), #dragon:hover {
     background-color: #3571fc;
 }
 
-#fairy > div:nth-child(2) {
+#fairy > div:nth-child(2), #fairy:hover {
     background-color: #D685AD;
 }
 
-#dark > div:nth-child(2) {
+#dark > div:nth-child(2), #dark:hover {
     background-color: #705746;
 }
 
-#rock > div:nth-child(2) {
+#rock > div:nth-child(2), #rock:hover {
     background-color: #B6A136;
 }
 
-#steel > div:nth-child(2) {
+#steel > div:nth-child(2), #steel:hover {
     background-color: #6b81b3;
 }
 
-#poison > div:nth-child(2) {
+#poison > div:nth-child(2), #poison:hover {
     background-color: #A33EA1;
 }

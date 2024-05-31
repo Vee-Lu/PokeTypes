@@ -4,25 +4,25 @@ var url = "https://pokeapi.co/api/v2/type/";
 var effective = document.querySelector("#effective");
 var not_effective = document.querySelector("#not_effective");
 
-//Add the getType function for each type class
-types.forEach((type) =>
-  type.addEventListener("click", function () {
-    //console.log(type.childNodes[3].innerHTML);
+//Add the getType function for each element type
+types.forEach((type) => type.addEventListener("click", function () {
+    //Pass in the String to getType and add the selected status to the type
     getType(type.childNodes[3]);
     type.classList.add("selected");
   }),
 );
 
 /*
- * Function that appends tye type name to the url to get the specified Pokemon type JSON and it's respective weakness, strength, etc
+ * Function that appends the type String to the url to get the specified Pokemon type JSON and it's respective weakness, strength, etc
  */
 async function getType(type) {
   //First clear the previous Type weakness
   clearTypes();
 
-  //Get the Pokemon type and append it to the PokeAPI URL so we can process and fetch the data from the PokeAPI JSON
+  //Get the Pokemon type in String form and append it to the PokeAPI URL so we can process and fetch the data from the PokeAPI JSON
   var typeUrl = url + type.innerHTML.toLowerCase();
-  //console.log(typeUrl);
+
+  //Fetch the data and get the json from PokeAPI
   const response = await fetch(typeUrl);
   const typeData = await response.json();
 
@@ -35,8 +35,8 @@ async function getType(type) {
     let weakRow = document.createElement("tr");
     let weakHeader = document.createElement("th");
 
-    let type = document.getElementById(weakness.name).children[1];
-    let typeCSS = window.getComputedStyle(type);
+    let typeWeakness = document.getElementById(weakness.name).children[1];
+    let typeCSS = window.getComputedStyle(typeWeakness);
     let color = typeCSS.getPropertyValue("background-color");
 
     weakRow.appendChild(weakHeader);
@@ -54,8 +54,8 @@ async function getType(type) {
     let strengthRow = document.createElement("tr");
     let strengthHeader = document.createElement("th");
 
-    let type = document.getElementById(strength.name).children[1];
-    let typeCSS = window.getComputedStyle(type);
+    let typeStrength = document.getElementById(strength.name).children[1];
+    let typeCSS = window.getComputedStyle(typeStrength);
     let color = typeCSS.getPropertyValue("background-color");
 
     strengthRow.appendChild(strengthHeader);
@@ -70,7 +70,9 @@ async function getType(type) {
   });
 }
 
-//Resets the table headers and rows
+/*
+ *Resets and clears the selected type's weaknesses and strengths from the table headers and rows
+ */
 function clearTypes() {
   var prev = document.getElementsByClassName("selected");
 
