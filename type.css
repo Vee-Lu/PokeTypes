@@ -9,7 +9,7 @@ body {
 
 @font-face {
     font-family: "Pokemon";
-    src: url("/Users/vincentlu/Downloads/Pokemon Solid.ttf"), format('woff2') ;
+    src: url("/Users/vincentlu/VSCode Projects/Projects/Pokemon/PokeTypes/Pokemon Solid.ttf"), format('woff2') ;
 }
 
 #title {
