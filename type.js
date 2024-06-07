@@ -3,6 +3,10 @@ var types = document.querySelectorAll(".type");
 var url = "https://pokeapi.co/api/v2/type/";
 var effective = document.querySelector("#effective");
 var not_effective = document.querySelector("#not_effective");
+var clear = document.querySelector("#clear");
+
+//Clears the selected status on screen
+clear.addEventListener("click", clearTypes);
 
 //Add the getType function for each element type
 types.forEach((type) => type.addEventListener("click", function () {
@@ -28,7 +32,7 @@ async function getType(type) {
 
   //Gets the list of weaknesses from the JSON
   const strengths = typeData.damage_relations.double_damage_to;
-  const weaknesses = typeData.damage_relations.half_damage_to;
+  const weaknesses = typeData.damage_relations.double_damage_from;
 
   //For each Pokemon type's weakness, add it to the Weakness Table
   weaknesses.forEach((weakness) => {

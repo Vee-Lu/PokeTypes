@@ -1,28 +1,44 @@
-//Get all the elements needed for PokeType
-var types = document.querySelectorAll(".type");
-var url = "https://pokeapi.co/api/v2/type/";
-var effective = document.querySelector("#effective");
-var not_effective = document.querySelector("#not_effective");
+export {};
 
-//Add the getType function for each type class
-types.forEach((type) =>
-  type.addEventListener("click", function () {
-    //console.log(type.childNodes[3].innerHTML);
+interface Type {
+  name: string;
+  color: string;
+}
+
+//Get all the elements needed for PokeType
+var types:NodeListOf<HTMLElement> = document.querySelectorAll(".type")!;
+var url:String = "https://pokeapi.co/api/v2/type/";
+var effective:HTMLElement = document.querySelector("#effective")!;
+var not_effective:HTMLElement = document.querySelector("#not_effective")!;
+const clear:HTMLElement = document.querySelector("#clear")!;
+
+var listOfTypes:Array<Type> = [];
+types.forEach((type) => {
+
+});
+
+//Clears the selected status on screen
+clear.addEventListener("click", clearTypes);
+
+//Add the getType function for each element type
+types.forEach((type) => type.addEventListener("click", function () {
+    //Pass in the String to getType and add the selected status to the type
     getType(type.childNodes[3]);
     type.classList.add("selected");
   }),
 );
 
 /*
- * Function that appends tye type name to the url to get the specified Pokemon type JSON and it's respective weakness, strength, etc
+ * Function that appends the type String to the url to get the specified Pokemon type JSON and it's respective weakness, strength, etc
  */
-async function getType(type) {
+async function getType(type:Node|Element) {
   //First clear the previous Type weakness
   clearTypes();
 
-  //Get the Pokemon type and append it to the PokeAPI URL so we can process and fetch the data from the PokeAPI JSON
+  //Get the Pokemon type in String form and append it to the PokeAPI URL so we can process and fetch the data from the PokeAPI JSON
   var typeUrl = url + type.innerHTML.toLowerCase();
-  //console.log(typeUrl);
+
+  //Fetch the data and get the json from PokeAPI
   const response = await fetch(typeUrl);
   const typeData = await response.json();
 
@@ -34,9 +50,9 @@ async function getType(type) {
   weaknesses.forEach((weakness) => {
     let weakRow = document.createElement("tr");
     let weakHeader = document.createElement("th");
-    
-    let type = document.getElementById(weakness.name).children[1];
-    let typeCSS = window.getComputedStyle(type);
+
+    let typeWeakness:Element = document.getElementById(weakness.name)!.children[1];
+    let typeCSS = window.getComputedStyle(typeWeakness);
     let color = typeCSS.getPropertyValue("background-color");
 
     weakRow.appendChild(weakHeader);
@@ -45,10 +61,8 @@ async function getType(type) {
     weakHeader.innerText = weakness.name;
     weakHeader.innerText =
       weakHeader.innerText[0].toUpperCase() + weakHeader.innerText.slice(1);
-      
-    if (not_effective) {
-        not_effective.appendChild(weakRow);
-    } 
+
+    not_effective.appendChild(weakRow);
   });
 
   //For each Pokemon type's strengths, add it to the Strength Table
@@ -56,8 +70,8 @@ async function getType(type) {
     let strengthRow = document.createElement("tr");
     let strengthHeader = document.createElement("th");
 
-    let type = document.getElementById(strength.name).children[1];
-    let typeCSS = window.getComputedStyle(type);
+    let typeStrength:Element = document.getElementById(strength.name)!.children[1];
+    let typeCSS = window.getComputedStyle(typeStrength);
     let color = typeCSS.getPropertyValue("background-color");
 
     strengthRow.appendChild(strengthHeader);
@@ -72,7 +86,9 @@ async function getType(type) {
   });
 }
 
-//Resets the table headers and rows
+/*
+ *Resets and clears the selected type's weaknesses and strengths from the table headers and rows
+ */
 function clearTypes() {
   var prev = document.getElementsByClassName("selected");
 
@@ -81,10 +97,10 @@ function clearTypes() {
   }
 
   while (not_effective.childNodes.length > 2) {
-    not_effective.removeChild(not_effective.lastChild);
+    not_effective.removeChild(not_effective.lastChild!);
   }
 
   while (effective.childNodes.length > 2) {
-    effective.removeChild(effective.lastChild);
+    effective.removeChild(effective.lastChild!);
   }
 }
